@@ -3,7 +3,7 @@ public class CaesarCipher {
     {
         plaintext = plaintext.toUpperCase();
 
-        if(offset >= 26)
+        if(offset >= 26 || offset <= -26)
         {
             offset = offset % 26;
         }
