@@ -1,8 +1,6 @@
 public class CaesarCipher {
     public static String encryptCaesarCipher(String plaintext, int offset)
     {
-        plaintext = plaintext.toUpperCase();
-
         if(offset >= 26 || offset <= -26)
         {
             offset = offset % 26;
@@ -13,26 +11,26 @@ public class CaesarCipher {
             return plaintext;
         }
 
-        String s = "";
-        char ch;
-        int chNum;
-        int newChNum;
+        String s = ""; //리턴값 반환을 위한 변수
+        char ch; //newChNum을 s에 저장하기 위한 변수
+        int chNum; //문자열의 문자를 받기 위한 변수
+        int newChNum;//chNum 변환위한 변수
 
         for(int i = 0; i < plaintext.length(); i++)
         {
-            if(plaintext.charAt(i) != 32)//if char is not a space
+            if(plaintext.charAt(i) != 32) //띄어쓰기는 제외
             {
                 chNum = plaintext.charAt(i);
                 newChNum = chNum + offset;
 
-                if(newChNum > 90)
+                if(newChNum > 126)
                 {
-                    newChNum -= 26;
+                    newChNum -= 93;
                 }
 
-                if(newChNum < 65)
+                if(newChNum < 33)
                 {
-                    newChNum += 26;
+                    newChNum += 93;
                 }
                 ch = (char)newChNum;
 
@@ -43,7 +41,6 @@ public class CaesarCipher {
                 s += " ";
             }
         }
-
         return s;
     }
 }
