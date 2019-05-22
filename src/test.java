@@ -1,6 +1,6 @@
 public class test {
     public static void main(String[] args) {
-        String originalText = "I Love Algorithms";
+        String originalText = "\"I Love Algorithms\"";
         int offset = -546541;
         String cipher = CaesarCipher.encryptCaesarCipher(originalText, offset);
         System.out.println("Original Text: " + originalText);
