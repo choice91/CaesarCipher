@@ -7,5 +7,7 @@ public class test {
         System.out.println("Cipher Text: " + cipher);
         String decipher = CaesarCipher.encryptCaesarCipher(cipher, -offset);
         System.out.println("Decipher Text: " + decipher);
+        
+        E_Frame E=new E_Frame();
     }
 }
