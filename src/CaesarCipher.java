@@ -11,14 +11,14 @@ public class CaesarCipher {
             return plaintext;
         }
 
-        String s = ""; //¸®ÅÏ°ª ¹İÈ¯À» À§ÇÑ º¯¼ö
-        char ch; //newChNumÀ» s¿¡ ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
-        int chNum; //¹®ÀÚ¿­ÀÇ ¹®ÀÚ¸¦ ¹Ş±â À§ÇÑ º¯¼ö
-        int newChNum;//chNum º¯È¯À§ÇÑ º¯¼ö
+        String s = ""; //ë¦¬í„´ê°’ ë°˜í™˜ì„ ìœ„í•œ ë³€ìˆ˜
+        char ch; //newChNumì„ sì— ì €ì¥í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+        int chNum; //ë¬¸ìì—´ì˜ ë¬¸ìë¥¼ ë°›ê¸° ìœ„í•œ ë³€ìˆ˜
+        int newChNum;//chNum ë³€í™˜ìœ„í•œ ë³€ìˆ˜
 
         for(int i = 0; i < plaintext.length(); i++)
         {
-            if(plaintext.charAt(i) != 32) //¶ç¾î¾²±â´Â Á¦¿Ü
+            if(plaintext.charAt(i) != 32 && plaintext.charAt(i) !=9) //ë„ì–´ì“°ê¸°ì™€ ë“¤ì—¬ì“°ê¸° ì œì™¸
             {
                 chNum = plaintext.charAt(i);
                 newChNum = chNum + offset;
@@ -38,9 +38,13 @@ public class CaesarCipher {
             }
             else
             {
-                s += " ";
+            	if(plaintext.charAt(i) == 32)
+            		s += " ";
+            	else
+            		s +="	";
             }
         }
         return s;
     }
 }
+
