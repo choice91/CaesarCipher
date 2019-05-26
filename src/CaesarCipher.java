@@ -18,7 +18,7 @@ public class CaesarCipher {
 
         for(int i = 0; i < plaintext.length(); i++)
         {
-            if(plaintext.charAt(i) != 32) //띄어쓰기는 제외
+            if(plaintext.charAt(i) != 32 && plaintext.charAt(i) !=9) //띄어쓰기와 들여쓰기 제외
             {
                 chNum = plaintext.charAt(i);
                 newChNum = chNum + offset;
@@ -38,7 +38,10 @@ public class CaesarCipher {
             }
             else
             {
-                s += " ";
+            	if(plaintext.charAt(i) == 32)
+            		s += " ";
+            	else
+            		s +="	";
             }
         }
         return s;
