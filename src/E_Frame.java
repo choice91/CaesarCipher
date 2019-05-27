@@ -6,7 +6,7 @@ public class E_Frame {
 	TextArea Contents; //파일 내용 출력
 	Panel P1;//텍스트 에어리어만 담음
 	Panel P2;//버튼만 담음
-	Frame f;
+	static Frame f;
 	
 	
 	E_Frame(){
@@ -90,67 +90,73 @@ public class E_Frame {
 			}
 
 			else if(name.equals("암호화 하기")) {
+				Frame Choice_E=new Frame("암호화 선택");
+				Toolkit tk=Toolkit.getDefaultToolkit();
+				Dimension screenSize=tk.getScreenSize();//화면의 크기를 구함
 				
-				FileDialog fileOpen=new FileDialog(f,"파일열기",FileDialog.LOAD);
-				fileOpen.setDirectory("D:\\"); 
-				fileOpen.setVisible(true);
-				path=fileOpen.getDirectory()+fileOpen.getFile(); 
+				Panel P3=new Panel();
+				P3.setLayout(new GridLayout(3,1,10,10));//버튼 배치 레이아웃 설징
+				Button button4=new Button("CaesarCipher");
+				Button button5=new Button("DES");
+				Button button6=new Button("AES");
 				
-				try {
-					fr=new FileReader(path);
-					br=new BufferedReader(fr);
+				button4.addActionListener(new Handler2());
+				button5.addActionListener(new Handler2());
+				button6.addActionListener(new Handler2());
 				
-					
-					String filename=fileOpen.getFile();
-					filename=filename.replace(".txt","_Encryption.txt");//원본 파일 이름을 얻어서 암호문 파일 생성 위함
-					File Fi=new File("D:\\",filename);
-					Fi.createNewFile();
-					
-					fw=new FileWriter(Fi);//새로 생성된 파일에 스트림 설치
-					bw=new BufferedWriter(fw);//파일 스트림에 버퍼 스트림 설치
-					
-					String line="";
-					for(int i=0; (line=br.readLine())!=null; i++) {
-						int offset =-546541;
-					    String cipher = CaesarCipher.encryptCaesarCipher(line, offset);
-						bw.write(cipher+"\r\n");
+				P3.add(button4);
+				P3.add(button5);
+				P3.add(button6);
+				
+				Choice_E.add(P3);
+				
+				Choice_E.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						e.getWindow().dispose();//선택창 제거
 					}
-					br.close();//입력 스트림 종료
-					bw.close();//출력 스트림 종료
-				}catch(IOException IE) {}
+				});
+				
+				Choice_E.setSize(250,400);
+				Choice_E.setLocation(screenSize.width/2+250,screenSize.height/2-250);
+				Choice_E.setVisible(true);
+				
 			}
 
 			else if(name.equals("복호화 하기")) {
-				
-				FileDialog fileOpen=new FileDialog(f,"파일열기",FileDialog.LOAD);
-				fileOpen.setDirectory("D:\\"); 
-				fileOpen.setVisible(true);
-				path=fileOpen.getDirectory()+fileOpen.getFile(); 
 
-				try {
-					fr=new FileReader(path);
-					br=new BufferedReader(fr);
+				Frame Choice_E2=new Frame("복호화 선택");
+				Toolkit tk=Toolkit.getDefaultToolkit();
+				Dimension screenSize=tk.getScreenSize();//화면의 크기를 구함
 
+				Panel P4=new Panel();
+				P4.setLayout(new GridLayout(3,1,10,10));//버튼 배치 레이아웃 설징
+				Button button7=new Button("CaesarCipher");
+				Button button8=new Button("DES");
+				Button button9=new Button("AES");
 
-					String filename=fileOpen.getFile();
-					filename=filename.replace("_Encryption.txt","_Decryption.txt");
-					File Fi=new File("D:\\",filename);
-					Fi.createNewFile();
+				button7.addActionListener(new Handler3());
+				button8.addActionListener(new Handler3());
+				button9.addActionListener(new Handler3());
 
-					fw=new FileWriter(Fi);
-					bw=new BufferedWriter(fw);
+				P4.add(button7);
+				P4.add(button8);
+				P4.add(button9);
 
-					String line="";
-					for(int i=0; (line=br.readLine())!=null; i++) {
-						int offset =-546541;
-						String cipher = CaesarCipher.encryptCaesarCipher(line, -offset);
-						bw.write(cipher+"\r\n");
+				Choice_E2.add(P4);
+
+				Choice_E2.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						e.getWindow().dispose();//선택창 제거
 					}
-					br.close();
-					bw.close();
+				});
 
-				}catch(IOException IE) {}
+				Choice_E2.setSize(250,400);
+				Choice_E2.setLocation(screenSize.width/2+250,screenSize.height/2-250);
+				Choice_E2.setVisible(true);
+
 			}
 		}
 	}
 }
+
+
