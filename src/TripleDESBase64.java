@@ -1,8 +1,9 @@
 import javax.crypto.Cipher;
+
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import javax.security.MessageDigest;
+import java.security.MessageDigest;
 import java.util.Base64;
 
 public class TripleDESBase64 {
@@ -11,7 +12,7 @@ public class TripleDESBase64 {
 		final MessageDigest md = java.security.MessageDigest.getInstance("md5");
 		//final byte[] digestOfPassword = md.digest("HG58YZ3CR9"
 		//	.getBytes("utf-8");
-		final SecretKey key = new SecretkeySpec(Base64.getDecoder().decode(base64Key), "DESede");
+		final SecretKey key = new SecretKeySpec(Base64.getDecoder().decode(base64Key), "DESede");
 		final IvParameterSpec iv = new IvParameterSpec(new byte[8]);
 		final Cipher cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, key);
