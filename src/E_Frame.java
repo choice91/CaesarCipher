@@ -97,7 +97,7 @@ public class E_Frame {
 				Panel P3=new Panel();
 				P3.setLayout(new GridLayout(3,1,10,10));//버튼 배치 레이아웃 설징
 				Button button4=new Button("CaesarCipher");
-				Button button5=new Button("DES");
+				Button button5=new Button("TripleDES");
 				Button button6=new Button("AES");
 				
 				button4.addActionListener(new Handler2());
@@ -131,7 +131,7 @@ public class E_Frame {
 				Panel P4=new Panel();
 				P4.setLayout(new GridLayout(3,1,10,10));//버튼 배치 레이아웃 설징
 				Button button7=new Button("CaesarCipher");
-				Button button8=new Button("DES");
+				Button button8=new Button("TripleDES");
 				Button button9=new Button("AES");
 
 				button7.addActionListener(new Handler3());
