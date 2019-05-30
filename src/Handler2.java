@@ -76,6 +76,38 @@ public class Handler2 implements ActionListener {
 				br2.close();//입력 스트림 종료
 				bw2.close();//출력 스트림 종료
 			}catch(IOException IE) {}
-		}	
+		}
+		
+		else if(name2.equals("TripleDES")) {
+			FileDialog fileOpen=new FileDialog(E_Frame.f,"파일열기",FileDialog.LOAD);
+			fileOpen.setDirectory("D:\\");
+			fileOpen.setVisible(true);
+			path2=fileOpen.getDirectory()+fileOpen.getFile();
+			
+			try {
+				fr2=new FileReader(path2);
+				br2=new BufferedReader(fr2);
+				
+				String filename2=fileOpen.getFile();
+				filename2=filename2.replaceAll(".txt", "_Encryption(TripleDES).txt");//원본 파일 이름을 얻어서 암호화 파일 생성 위함
+				File Fi2=new File("D:\\",filename2);
+				Fi2.createNewFile();
+				
+				fw2=new FileWriter(Fi2);//새로 생성된 파일에 스트림 설치
+				bw2=new BufferedWriter(fw2);//파일 스트림에 버퍼 스트림 설치
+				
+				String line="";
+				for(int i=0; (line=br2.readLine())!=null; i++) {
+					String DESbase64Key = "6lRqh2yaYyc1NV2oCcqltC0hYp/9Lnn5";
+					String encryptedBase63_3DES="";
+					try {
+						encryptedBase63_3DES = TripleDESBase64.encrypt(DESbase64Key, line);
+					} catch(Exception E) {}
+					bw2.write(encryptedBase63_3DES+"\r\n");
+				}
+				br2.close();//입력 스트림 종료
+				bw2.close();//출력 스트림 종료
+			}catch(IOException IE) {}
+		}
 	}
 }
