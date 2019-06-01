@@ -26,7 +26,7 @@ public class Handler3 implements ActionListener {
 
 
 				String filename3=fileOpen.getFile();
-				filename3=filename3.replace("_Encryption(TripleDES).txt","_Decryption(TripleDES).txt");//원본 파일 이름을 얻어서 암호문 파일 생성 위함
+				filename3=filename3.replace("_Encryption(Caesar).txt","_Decryption(Caesar).txt");//원본 파일 이름을 얻어서 암호문 파일 생성 위함
 				File Fi2=new File("D:\\",filename3);
 				Fi2.createNewFile();
 
