@@ -158,5 +158,3 @@ public class E_Frame {
 		}
 	}
 }
-
-
